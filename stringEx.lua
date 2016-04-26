@@ -55,3 +55,11 @@ string.ucharAt=function(str,pos)
     return string.ulist(str)[pos]
 end
 
+string.ureverse=function(str)
+    local list=string.utable(str)
+    local reverseList=""
+    for k,v in ipairs(list) do
+        reverseList=v..reverseList
+    end
+    return reverseList
+end
