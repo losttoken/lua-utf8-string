@@ -25,3 +25,27 @@ string.usub = function(str,i,j)
     return substr
 end
 
+string.ufind=function(str,pattern)
+	local b,e=string.find(str,pattern)
+	if b==nil then return nil end
+	local list=string.ulist(str)
+	local count=1
+	local beginPos=0
+	local endPos=0
+	for k,v in ipairs(list) do
+		if b==count then
+			beginPos=k	
+		end
+		if e==count then
+			endPos=k
+			return beginPos,endPos
+		end
+		count=count+string.len(v)
+	end
+	return nil,nil
+end
+
+string.ucharAt=function(str,pos)
+	return string.ulist(str)[pos]
+end
+
