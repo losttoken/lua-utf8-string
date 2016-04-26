@@ -12,6 +12,7 @@ end
 string.usub = function(str,i,j)
     local list=string.ulist(str)
     local substr=""
+    if j==nil then j=#list end
 	if i==0 then i=1 end
 	if j==0 then j=1 end
 	i=i>0 and i or #list+i+1
