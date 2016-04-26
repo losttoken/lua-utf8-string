@@ -1,25 +1,22 @@
 string.ulen = function(str)
-    --local tab=string.utable(str)
-    --return #tab
     local _, count = string.gsub(str, "[^\128-\193]", "")
     return count
 end
 
-
-string.utable=function(str)
-    local tab={}
-    for uchar in string.gfind(str, '[%z\1-\127\194-\244][\128-\191]*') do tab[#tab+1] = uchar end
-    return tab
+string.ulist=function(str)
+    local list={}
+    for uchar in string.gfind(str, '[%z\1-\127\194-\244][\128-\191]*') do list[#list+1] = uchar end
+    return list
 end
 
 string.usub = function(str,sum)
-    local tab=string.utable(str)
-    local endp=""
+    local list=string.ulist(str)
+    local substr=""
     for j=1,sum,1 do
-        if tab[j]~=nil then
-            endp=endp..tab[j]
+        if list[j]~=nil then
+            substr=substr..list[j]
         end
     end
-    return endp
+    return substr
 end
 
