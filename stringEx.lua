@@ -14,8 +14,8 @@ string.usub = function(str,i,j)
     local substr=""
 	if i==0 then i=1 end
 	if j==0 then j=1 end
-	i=i>0 and i or #list+i
-	j=j>0 and j or #list+j
+	i=i>0 and i or #list+i+1
+	j=j>0 and j or #list+j+1
 	if i>j then i=i+j;j=i-j;i=i-j; end	
     for k=i,j,1 do
         if list[k]~=nil then
@@ -50,6 +50,8 @@ string.ufind=function(str,pattern)
 end
 
 string.ucharAt=function(str,pos)
-	return string.ulist(str)[pos]
+	local list=string.ulist(str)
+    pos=pos>0 and pos or #list+pos+1
+    return string.ulist(str)[pos]
 end
 
